@@ -25,4 +25,4 @@ module.exports = {
     "vue/max-attributes-per-line": "off",
     "no-param-reassign": ["error", { "props": false }]
   }
-}
+};
