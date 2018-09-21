@@ -18,6 +18,7 @@ module.exports = {
   /*
   ** Build configuration
   */
+  plugins: ['~/plugins/i18n.js'],
   build: {
     /*
     ** Run ESLint on save

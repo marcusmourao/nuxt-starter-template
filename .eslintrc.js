@@ -23,5 +23,6 @@ module.exports = {
     "semi": [2, "never"],
     "no-console": "off",
     "vue/max-attributes-per-line": "off",
+    "no-param-reassign": ["error", { "props": false }]
   }
 }
