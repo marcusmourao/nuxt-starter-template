@@ -8,7 +8,9 @@
 
 <script>
 
-export default {
+import GenericInput from '../components/generic-input.vue';
 
-}
+export default {
+  components: {GenericInput},
+};
 </script>
