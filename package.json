@@ -37,5 +37,8 @@
     "mocha": "^5.2.0",
     "mocha-webpack": "^1.1.0",
     "prettier": "1.13.7"
+  },
+  "resolutions": {
+    "prettier": "1.13.6"
   }
 }
