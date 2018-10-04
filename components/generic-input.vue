@@ -1,14 +1,15 @@
 <template>
   <div class="input-field">
+    <input
+      :class="{'invalid': !isValueValid}"
+      :name="id"
+      :type="type"
+      :id="id"
+      v-model="value"
+      class="validate"
+    >
     <label :for="id">
       {{ label }}
-      <input
-        :class="{'invalid': !isValueValid}"
-        :name="id"
-        :id="id"
-        v-bind="$attrs"
-        v-model="value"
-      >
     </label>
     <span
       :data-error="errorMessage"
@@ -21,7 +22,6 @@ import {getValidateFunctionBySlug} from '../validate/validate';
 
 export default {
   name: 'generic-input',
-  inheritAttrs: false,
   props: {
     options: {
       type: Object,
@@ -51,8 +51,14 @@ export default {
     validateFunctionSlug() {
       return this.options.validateFunctionSlug || '';
     },
+    label() {
+      return this.options.label || this.label;
+    },
     id() {
       return this.options.id || this._uid;
+    },
+    type() {
+      return this.options.type || 'text';
     },
     isValueValid() {
       if (this.enableValidation) {

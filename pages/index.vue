@@ -2,6 +2,10 @@
   <section class="container">
     <div>
       <p>{{ $t('title') }}</p>
+      <generic-input
+        :initialValue="'Olá Mundo'"
+        :enableValidation="true"
+        :options="{label: 'Teste', id: 'test', validateFunctionSlug: 'text-exists'}"/>
     </div>
   </section>
 </template>
