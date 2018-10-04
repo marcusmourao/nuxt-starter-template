@@ -1,15 +1,15 @@
 <template>
   <div class="input-field">
-    <input
-      :placeholder="placeholder"
-      :class="{'invalid': !isValueValid}"
-      :autofocus="autofocus"
-      :type="type"
-      :id="id"
-      :disabled="disabled"
-      v-model="value"
-    >
-    <label :for="id">{{ label }}</label>
+    <label :for="id">
+      {{ label }}
+      <input
+        :class="{'invalid': !isValueValid}"
+        :name="id"
+        :id="id"
+        v-bind="$attrs"
+        v-model="value"
+      >
+    </label>
     <span
       :data-error="errorMessage"
       class="helper-text"/>
@@ -17,8 +17,11 @@
 </template>
 
 <script>
+import {getValidateFunctionBySlug} from '../validate/validate';
+
 export default {
   name: 'generic-input',
+  inheritAttrs: false,
   props: {
     options: {
       type: Object,
@@ -39,20 +42,8 @@ export default {
     };
   },
   computed: {
-    label() {
-      return this.options.label || '';
-    },
-    id() {
-      return this.options.id;
-    },
     errorMessage() {
       return this.options.errorMessage || '';
-    },
-    type() {
-      return this.options.type || 'text';
-    },
-    autofocus() {
-      return this.options.autofocus || 'false';
     },
     mask() {
       return this.options.mask || '';
@@ -60,21 +51,18 @@ export default {
     validateFunctionSlug() {
       return this.options.validateFunctionSlug || '';
     },
-    disabled() {
-      return this.options.disabled || false;
+    id() {
+      return this.options.id || this._uid;
     },
-    placeholder() {
-      return this.options.placeholder || '';
+    isValueValid() {
+      if (this.enableValidation) {
+        const genericValidateFunction = getValidateFunctionBySlug(this.validateFunctionSlug);
+        if (genericValidateFunction) {
+          return genericValidateFunction(this.value);
+        }
+      }
+      return true;
     },
-    // isValueValid() {
-    //   if (this.enableValidation) {
-    //     const genericValidateFunction = getValidateFunctionBySlug(this.validateFunctionSlug);
-    //     if (genericValidateFunction) {
-    //       return genericValidateFunction(this.value);
-    //     }
-    //   }
-    //   return true;
-    // },
   },
   watch: {
     value() {

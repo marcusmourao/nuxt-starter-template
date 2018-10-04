@@ -15,7 +15,7 @@
     "test": "mocha-webpack --webpack-config webpack.config.js --require test/setup.js test/**/*.spec.js"
   },
   "dependencies": {
-    "nuxt": "^1.0.0",
+    "nuxt": "^2.1.0",
     "vue": "^2.5.17",
     "vue-i18n": "^8.1.0",
     "webpack-node-externals": "^1.7.2"

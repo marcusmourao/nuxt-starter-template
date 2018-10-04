@@ -30,7 +30,7 @@ module.exports = {
     'no-multiple-empty-lines': [ 'error', { max: 2, maxEOF: 1, maxBOF: 0 } ],
     'eol-last': [ 'error', 'always' ],
     'no-trailing-spaces': [ 'error', { skipBlankLines: false, ignoreComments: false }],
-    'no-underscore-dangle': ['error', { 'allow': ['_milliseconds'] }],
+    'no-underscore-dangle': ['error', { 'allow': ['_milliseconds', '_uid'] }],
     'no-param-reassign': ["error", { "props": false }],
 
     quotes: [ 'error', 'single', 'avoid-escape' ],
